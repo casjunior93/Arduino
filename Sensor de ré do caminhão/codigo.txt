@@ -46,7 +46,7 @@ void loop()
   noTone(pinoBuzzer);
   //Apaga o led
   digitalWrite(11, LOW);
-  Serial.print("Menor que 30");  
+  Serial.print("Menor que 20");  
   }else{//SENÃO, FAZ
   noTone(pinoBuzzer);
   //Apaga o led
@@ -55,7 +55,7 @@ void loop()
   // SE A DISTÂNCIA ENTRE O OBJETO E O SENSOR ULTRASONICO FOR MENOR QUE 8CM, FAZ
   if(cmMsec <= 8 ){
   tone(pinoBuzzer,1500);//ACIONA O BUZZER
-  Serial.print("Menor que 30");
+  Serial.print("Menor que 8");
   //Acende o led
   digitalWrite(11, HIGH);
   }
