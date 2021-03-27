@@ -1,0 +1,9 @@
+Kit
+
+. Cabos Jumper
+. Buzzer ativo 5V
+. Protoboard
+. Sensor Ultrasônico
+. Placa UNO R3 com cabo USB
+. LED vermelho 5mm
+. Resistor 220 Ohm
