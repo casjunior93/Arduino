@@ -1,23 +1,25 @@
-//Programa: Conectando Sensor Ultrassonico HC-SR04 ao Arduino
-//Autor: FILIPEFLOP
+//Programa: Sensor de ré para o caminhão
+//Autor: Carlos Alberto Silva Júnior
+//Download da biblioteca do sensor Ultrasonic HC-SR04: https://github.com/filipeflop/Ultrasonic
  
 //Carrega a biblioteca do sensor ultrassonico
 #include <Ultrasonic.h>
  
-//Define os pinos para o trigger e echo
+//Define os pinos para o trigger e echo do sensor Ultrsonico
 #define pino_trigger 4
 #define pino_echo 5
 //PINO DIGITAL EM QUE O BUZZER ESTÁ CONECTADO
 #define pinoBuzzer 2
-//Define a porta do led como saida
 
 //Inicializa o sensor nos pinos definidos acima
 Ultrasonic ultrasonic(pino_trigger, pino_echo);
  
 void setup()
 {
+  //Imprime no Monitor Serial
   Serial.begin(9600);
   Serial.println("Lendo dados do sensor...");
+  //Define a porta do led como saida
   pinMode(11, OUTPUT);
 }
  
@@ -34,23 +36,26 @@ void loop()
   Serial.print(" - Distancia em polegadas: ");
   Serial.println(inMsec);
   delay(500);
-  if(cmMsec <= 20){// SE A DISTÂNCIA ENTRE O OBJETO E O SENSOR ULTRASONICO FOR MENOR QUE 30CM, FAZ
+  // SE A DISTÂNCIA ENTRE O OBJETO E O SENSOR ULTRASONICO FOR MENOR QUE 20CM, FAZ
+  if(cmMsec <= 20){
   tone(pinoBuzzer,1500);//ACIONA O BUZZER
   //Acende o led
   digitalWrite(11, HIGH);
   delay(250);
-  noTone(pinoBuzzer);//BUZZER PERMANECE DESLIGADO
+  //BUZZER PERMANECE DESLIGADO
+  noTone(pinoBuzzer);
   //Apaga o led
   digitalWrite(11, LOW);
-  Serial.print("Menor que 30");  
+  Serial.print("Menor que 20");  
   }else{//SENÃO, FAZ
-  noTone(pinoBuzzer);//BUZZER PERMANECE DESLIGADO
+  noTone(pinoBuzzer);
   //Apaga o led
   digitalWrite(11, LOW);
   }
-  if(cmMsec <= 8 ){// SE A DISTÂNCIA ENTRE O OBJETO E O SENSOR ULTRASONICO FOR MENOR QUE 30CM, FAZ
+  // SE A DISTÂNCIA ENTRE O OBJETO E O SENSOR ULTRASONICO FOR MENOR QUE 8CM, FAZ
+  if(cmMsec <= 8 ){
   tone(pinoBuzzer,1500);//ACIONA O BUZZER
-  Serial.print("Menor que 30");
+  Serial.print("Menor que 8");
   //Acende o led
   digitalWrite(11, HIGH);
   }
